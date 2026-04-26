@@ -188,5 +188,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shot
   shotSpeed: 3
   shotDuration: 5
-  direccion: {x: -1, y: 0}
-  playerShot: 0
+  shotDirection: {x: -1, y: 0}
+  isPlayerShot: 0

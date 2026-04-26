@@ -1386,9 +1386,8 @@ MonoBehaviour:
   linearVelocity: 0.51
   minimumTimeBetweenDirectionChange: 1
   timeBetweenDirectionChange: 3
-  randomDirectionChange: 75
-  maximoValorY: 0.75
-  maximoValorX: 1.22
+  keepDirectionProbability: 90
+  maximiumValueY: 0.75
   points: 5000
   lifes: 20
   bossText: {fileID: 232244951}

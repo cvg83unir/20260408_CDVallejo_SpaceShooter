@@ -32,6 +32,8 @@ public class SpaceShipController : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        this.lifes = ClsGlobales.initialLifesNumber;
+
         //Cachear el RigidBody
         this.rb2D = GetComponent<Rigidbody2D>();
 

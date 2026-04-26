@@ -4,8 +4,7 @@ public class Shot : MonoBehaviour
 {
     [SerializeField] float shotSpeed = 3f;
     [SerializeField] float shotDuration = 5f;//tiempo después del cual destruimos el GameObject (el disparo) muera al cabo de unos segundos para ir liberando la escena de Objetos:
-    [SerializeField] Vector2 direccion;
-    [SerializeField] bool playerShot = false;//para distinguir si son disparos del jugador o de los enemigos
+    [SerializeField] Vector2 shotDirection;
     
     private Rigidbody2D rb2D;
 
@@ -19,7 +18,7 @@ public class Shot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.rb2D.linearVelocity = direccion * shotSpeed;
+        this.rb2D.linearVelocity = shotDirection * shotSpeed;
         //this.rb2D.linearVelocity = direccion * shotSpeed * Time.deltaTime;
 
         //Necesitamos que el GameObject (el disparo) muera al cabo de unos segundos para ir liberando la escena de Objetos:
@@ -55,7 +54,7 @@ public class Shot : MonoBehaviour
     {
         //La bala se tiene que destruir en ciertas condiciones, por ejemplo.
         //Una bala del jugador se tiene que destruir en cuanto toque en cualquier cosa, salvo otros disparos o mi propia nave:
-        if (this.playerShot)
+        if (this.tag.Equals("PlayerShot"))
         {
             if (!elOtro.CompareTag("EnemyShot") && !elOtro.CompareTag("Player"))
             {

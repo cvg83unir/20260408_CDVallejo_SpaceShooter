@@ -3,6 +3,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -16,13 +17,13 @@ public class BossController : MonoBehaviour
     [SerializeField] float linearVelocity = 3f;
     [SerializeField] float minimumTimeBetweenDirectionChange = 1f;
     [SerializeField] float timeBetweenDirectionChange = 3f;
-    [SerializeField] int randomDirectionChange = 90;
+    [SerializeField] int keepDirectionProbability = 90;
     private float randomSecondsCounter = 0f;
     private float directionSecondsCounter = 0f;
-    [SerializeField] float maximoValorY = 0.75f;
-    [SerializeField] float maximoValorX = 1.22f;
+    [SerializeField] float maximiumValueY = 0.75f;
     private bool isGoingDown = true;
 
+    //Variables para los puntos y las vidas del enemigo final:
     [SerializeField] int points = 5000; //Puntos que gana el jugador al eliminar a este enemigo
     [SerializeField] private int lifes = 20;
     [SerializeField] private TextMeshProUGUI bossText;
@@ -46,6 +47,7 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //El movimiento y el disparo del jefe final se activan cuando el jugador ha llegado a la zona del jefe final:
         if (ClsGlobales.activateFinalBoss == true)
         {
             MostrarTextoBoss();
@@ -56,6 +58,42 @@ public class BossController : MonoBehaviour
                 StartCoroutine(Shoot());
             }
         }
+    }
+
+    private void Movimiento()
+    {
+        Vector2 direction = this.isGoingDown ? Vector2.down : Vector2.up;
+        transform.Translate(direction * this.linearVelocity * Time.deltaTime);
+
+        //Delimitamos los valores de la Y dentro de las cuales se puede mover nuestra nave:
+        float yDelimitada = Mathf.Clamp(transform.position.y, -this.maximiumValueY, this.maximiumValueY);
+        transform.position = new Vector3(transform.position.x, yDelimitada, transform.position.z);
+
+        this.directionSecondsCounter += Time.deltaTime;
+        this.randomSecondsCounter += Time.deltaTime;
+
+        int randomValue = 0;
+        if (this.randomSecondsCounter > minimumTimeBetweenDirectionChange)
+        {
+            randomValue = Random.Range(0, 100);
+            this.randomSecondsCounter = 0;
+
+        }
+
+        //Debug.Log("ContadorSegundos: " + this.directionSecondsCounter + ". randomSecondsCounter: " + this.randomSecondsCounter + ". Valor aleatorio: " + randomValue);
+
+        //Cambio de dirección si llevo más de X segundos en la misma dirección
+        if (this.directionSecondsCounter >= this.timeBetweenDirectionChange)
+        {
+            changeDirection();
+        }
+        //También voy a cambiar de dirección si llevo más de 1 segundo en la misma dirección y sale un número aleatorio entre X y 100
+        //(por defecto entre 91 y 100, por ello hay un 10% de posibilidades de un cambio repentino de dirección)
+        else if (this.directionSecondsCounter > minimumTimeBetweenDirectionChange && randomValue > keepDirectionProbability)
+        {
+            changeDirection();
+        }
+
     }
 
     IEnumerator Shoot()
@@ -69,59 +107,7 @@ public class BossController : MonoBehaviour
         }
     }
 
-    IEnumerator Move()
-    {
-        while (true)
-        {
-            Vector2 direction = this.isGoingDown ? Vector2.down : Vector2.up;
-            transform.Translate(direction * this.linearVelocity * Time.deltaTime);
 
-            //Delimitamos los valores de la Y dentro de las cuales se puede mover nuestra nave:
-            float yDelimitada = Mathf.Clamp(transform.position.y, -this.maximoValorY, this.maximoValorY);
-            transform.position = new Vector3(transform.position.x, yDelimitada, transform.position.z);
-
-            //Cambio de dirección
-            this.isGoingDown = !this.isGoingDown;
-
-
-        }
-    }
-
-    private void Movimiento()
-    {
-        Vector2 direction = this.isGoingDown ? Vector2.down : Vector2.up;
-        transform.Translate(direction * this.linearVelocity * Time.deltaTime);
-
-        //Delimitamos los valores de la Y dentro de las cuales se puede mover nuestra nave:
-        float yDelimitada = Mathf.Clamp(transform.position.y, -this.maximoValorY, this.maximoValorY);
-        transform.position = new Vector3(transform.position.x, yDelimitada, transform.position.z);
-
-        this.directionSecondsCounter += Time.deltaTime;
-        this.randomSecondsCounter += Time.deltaTime;
-
-        int randomValue = 0;
-        if (this.randomSecondsCounter > minimumTimeBetweenDirectionChange)
-        {
-            randomValue = Random.Range(0, 100);
-            this.randomSecondsCounter = 0;
-
-        } 
-
-
-        //Debug.Log("ContadorSegundos: " + this.directionSecondsCounter + ". randomSecondsCounter: " + this.randomSecondsCounter + ". Valor aleatorio: " + randomValue);
-
-        //Cambio de dirección si llevo más de X segundos en la misma dirección
-        if (this.directionSecondsCounter >= this.timeBetweenDirectionChange)
-        {
-            changeDirection();
-        }
-        //También voy a cambiar de dirección si llevo más de 1 segundo en la misma dirección y sale un número aleatorio entre 80  y 100
-        else if(this.directionSecondsCounter> minimumTimeBetweenDirectionChange && randomValue > randomDirectionChange)
-        {
-            changeDirection();
-        }
-            
-    }
 
     private void changeDirection()
     {
@@ -172,6 +158,9 @@ public class BossController : MonoBehaviour
             {
                 Destroy(gameObject);
                 ClsGlobales.scorePlayer += this.points;
+
+                ClsGlobales.startScrollStageOne = false;
+                SceneManager.LoadScene("EndingScene");
             }
 
 

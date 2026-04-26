@@ -82,7 +82,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1386117114486701266, guid: d6efc45fc96ac8e42a26839787534635, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -171,5 +171,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shot
   shotSpeed: 3
   shotDuration: 5
-  direccion: {x: 1, y: 0}
-  playerShot: 1
+  shotDirection: {x: 1, y: 0}

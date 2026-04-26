@@ -104,11 +104,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 440
-        height: 478
+        y: 383
+        width: 61
+        height: 77
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -121,11 +121,143 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: NES - Gradius - Miscellaneous - Background Tiles_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 348
+        width: 65
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8f9c39362dd2e4293aa5fcb37d0e57
+      internalID: -1665361609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Gradius - Miscellaneous - Background Tiles_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 348
+        width: 48
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21807243123626c42af99f904c79405a
+      internalID: -994509363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Gradius - Miscellaneous - Background Tiles_3
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 348
+        width: 49
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 725166615772b6c49be0d7742bc8e275
+      internalID: -1276202767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Gradius - Miscellaneous - Background Tiles_4
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 348
+        width: 63
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1a6ae888a035844badc9598d4726b3d
+      internalID: -1766112019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Gradius - Miscellaneous - Background Tiles_5
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 348
+        width: 96
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942f176b6f34cff4f8ed74dfaadefef1
+      internalID: -1370262942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Gradius - Miscellaneous - Background Tiles_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 348
+        width: 97
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160ef935b0446cc428e6d9c837b68315
+      internalID: -1418103857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b3029a23438781e4dab24b6b5989ae85
     internalID: 0
     vertices: []
     indices: 
@@ -136,6 +268,12 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       NES - Gradius - Miscellaneous - Background Tiles_0: 3775261121627209902
+      NES - Gradius - Miscellaneous - Background Tiles_1: -1665361609
+      NES - Gradius - Miscellaneous - Background Tiles_2: -994509363
+      NES - Gradius - Miscellaneous - Background Tiles_3: -1276202767
+      NES - Gradius - Miscellaneous - Background Tiles_4: -1766112019
+      NES - Gradius - Miscellaneous - Background Tiles_5: -1370262942
+      NES - Gradius - Miscellaneous - Background Tiles_6: -1418103857
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
