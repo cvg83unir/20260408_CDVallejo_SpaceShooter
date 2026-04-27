@@ -22,9 +22,9 @@ public class Scroll : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("Start de Scroll. Paso 1. posicionInicial. X = " + posicionInicial.x + ", Y = " + posicionInicial.y);
+        //Debug.Log("Start de Scroll. Paso 1. posicionInicial. X = " + posicionInicial.x + ", Y = " + posicionInicial.y);
         posicionInicial = transform.position;
-        Debug.Log("Start de Scroll. Paso 2. posicionInicial. X = " + posicionInicial.x + ", Y = " + posicionInicial.y);
+        //Debug.Log("Start de Scroll. Paso 2. posicionInicial. X = " + posicionInicial.x + ", Y = " + posicionInicial.y);
 
     }
 
@@ -56,7 +56,7 @@ public class Scroll : MonoBehaviour
 
         nuevaPosicion = posicionInicial + espacio * direccion;
 
-        Debug.Log("espacio: " + espacio + ", nueva posición. X = " + nuevaPosicion.x + ", Y = " + nuevaPosicion.y);
+        //Debug.Log("espacio: " + espacio + ", nueva posición. X = " + nuevaPosicion.x + ", Y = " + nuevaPosicion.y);
 
         //mi posición se va refrescando desde la inicial SUMANDO tanto como resto me quede en la dirección deseada
         transform.position = nuevaPosicion;

@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class SpaceShipController : MonoBehaviour
 {
@@ -23,7 +24,6 @@ public class SpaceShipController : MonoBehaviour
     private bool bRecuperando = false;
     private float secondsRecoveryPlayer = 0f;
     [SerializeField] private TextMeshProUGUI textLifes;
-    [SerializeField] private TextMeshProUGUI textGameOver;
     [SerializeField] private TextMeshProUGUI textScore;
 
     private Rigidbody2D rb2D;
@@ -149,7 +149,7 @@ public class SpaceShipController : MonoBehaviour
     {
         if (!elOtro.CompareTag("PlayerShot"))
         {
-            Debug.Log("Golpe recibido. Variable bRecuperando: " + this.bRecuperando + ". Mis Vidas = " + this.lifes);
+            //Debug.Log("Golpe recibido. Variable bRecuperando: " + this.bRecuperando + ". Mis Vidas = " + this.lifes);
             //Cada vez que algo colisione con mi nave, nos quitamos una vida, salvo que este en
             //tiempo de recuperación:
             if (this.bRecuperando == false)
@@ -162,7 +162,10 @@ public class SpaceShipController : MonoBehaviour
             if (this.lifes <= 0)
             {
                 Destroy(gameObject);
-                this.textGameOver.gameObject.SetActive(true);
+
+                ClsGlobales.gameCompleted = false;
+                System.Threading.Thread.Sleep(1000);
+                SceneManager.LoadScene("EndingScene");
             }
             //Si no hemos muestro, activamos el recovery time
             else

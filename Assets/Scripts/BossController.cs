@@ -159,7 +159,9 @@ public class BossController : MonoBehaviour
                 Destroy(gameObject);
                 ClsGlobales.scorePlayer += this.points;
 
-                ClsGlobales.startScrollStageOne = false;
+                //Debug.Log("Ponemos un tiempo de espera.");
+                ClsGlobales.gameCompleted = true;
+                System.Threading.Thread.Sleep(1000);
                 SceneManager.LoadScene("EndingScene");
             }
 
