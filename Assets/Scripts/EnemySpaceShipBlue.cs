@@ -53,6 +53,7 @@ public class EnemySpaceShipBlue : MonoBehaviour
 
             Destroy(gameObject);
             ClsGlobales.scorePlayer += this.points;
+
         }
     }
 }

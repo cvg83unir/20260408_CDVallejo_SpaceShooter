@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SpaceShipController : MonoBehaviour
 {
@@ -20,13 +21,17 @@ public class SpaceShipController : MonoBehaviour
 
     //Variables para el contador de vidas del usuario:
     [SerializeField] private int lifes = 3;
-    [SerializeField] private float segundosTiempoRecuperacion = 3;
-    private bool bRecuperando = false;
-    private float secondsRecoveryPlayer = 0f;
+    [SerializeField] private float recoverySecondsLimit = 3f;
+    [SerializeField] private float blinkingSecondsInterval = 0.2f;
+    private bool recovering = false;
+    private float actualRecoveringSeconds = 0f;
     [SerializeField] private TextMeshProUGUI textLifes;
     [SerializeField] private TextMeshProUGUI textScore;
 
     private Rigidbody2D rb2D;
+    private SpriteRenderer spriteRenderer;
+    private Sprite defaultSprite;
+    private PolygonCollider2D pcollider;
     private Vector2 rawMove = Vector2.zero; 
 
     private void Awake()
@@ -34,8 +39,11 @@ public class SpaceShipController : MonoBehaviour
         Application.targetFrameRate = 60;
         this.lifes = ClsGlobales.initialLifesNumber;
 
-        //Cachear el RigidBody
+        //Cachear el RigidBody y el spriteRenderer
         this.rb2D = GetComponent<Rigidbody2D>();
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
+        this.defaultSprite = this.spriteRenderer.sprite;
+        this.pcollider = GetComponent<PolygonCollider2D>();
 
         //Así cogemos las acciones del personaje sólo cuando hay alguna interacción por parte del jugador
         move.action.started += OnMove;
@@ -74,18 +82,19 @@ public class SpaceShipController : MonoBehaviour
         }
 
         //Temporizador del tiempo del recuperación del jugador:
-        if(bRecuperando)
+        if(recovering)
         {
-            this.secondsRecoveryPlayer += Time.deltaTime;
-            if (this.secondsRecoveryPlayer > this.segundosTiempoRecuperacion)
+            this.actualRecoveringSeconds += Time.deltaTime;
+            if (this.actualRecoveringSeconds > this.recoverySecondsLimit)
             {
-                this.bRecuperando = false;
-                this.secondsRecoveryPlayer = 0;
+                this.recovering = false;
+                Debug.Log("Fin RECOVERY");
+                this.actualRecoveringSeconds = 0;
             }
         }
         else
         {
-            this.secondsRecoveryPlayer = 0;
+            this.actualRecoveringSeconds = 0;
         }
 
         //Delimitamos los valores de la Y dentro de las cuales se puede mover nuestra nave:
@@ -149,10 +158,9 @@ public class SpaceShipController : MonoBehaviour
     {
         if (!elOtro.CompareTag("PlayerShot"))
         {
-            //Debug.Log("Golpe recibido. Variable bRecuperando: " + this.bRecuperando + ". Mis Vidas = " + this.lifes);
             //Cada vez que algo colisione con mi nave, nos quitamos una vida, salvo que este en
             //tiempo de recuperación:
-            if (this.bRecuperando == false)
+            if (this.recovering == false)
             {
                 this.lifes--;
                 this.textLifes.text = "VIDAS: " + this.lifes;
@@ -164,16 +172,41 @@ public class SpaceShipController : MonoBehaviour
                 Destroy(gameObject);
 
                 ClsGlobales.gameCompleted = false;
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(500);
                 SceneManager.LoadScene("EndingScene");
             }
-            //Si no hemos muestro, activamos el recovery time
+            //Si no hemos muerto, activamos el tiempo de recuperación y la corrutina del parpadeo
             else
             {
-                this.bRecuperando = true;
+                this.recovering = true;
+                //Comenzamos el parpadeo del personaje:
+                StartCoroutine(Blink());
+
             }
         }
 
+    }
+
+    private IEnumerator Blink()
+    {
+        //Primero desactivamos el collider del personaje para que mientras estamos parpadeando no nos
+        //convirtamos en una arma de destrucción masiva
+        this.pcollider.enabled = false;
+
+        while (this.recovering)
+        {
+            //quitamos el renderer y esperamos un poco de tiempo...
+            this.spriteRenderer.sprite = null;
+            yield return new WaitForSeconds(this.blinkingSecondsInterval);
+
+            //pasado ese tiempo, volvemos a poner el renderer
+            this.spriteRenderer.sprite = this.defaultSprite;
+            yield return new WaitForSeconds(this.blinkingSecondsInterval);
+
+        }
+
+        //Al acabar el tiempo de recuperación y quitar el parpadeo, volvemos a poner el collider
+        this.pcollider.enabled = true;
     }
 
 }

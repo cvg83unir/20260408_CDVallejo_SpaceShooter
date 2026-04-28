@@ -290,7 +290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 24.984406, y: 6.5}
+  m_AnchoredPosition: {x: 24.984375, y: 6.5}
   m_SizeDelta: {x: 49.9679, y: 13.445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &469297215
@@ -778,7 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709301532}
   - component: {fileID: 709301531}
-  - component: {fileID: 709301530}
+  - component: {fileID: 709301535}
   - component: {fileID: 709301533}
   - component: {fileID: 709301534}
   m_Layer: 0
@@ -788,30 +788,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &709301530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709301529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6d85640a9d51e146ab7497eac1b075c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  linearVelocity: 1.5
-  move: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  shoot: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  prefabShot: {fileID: 8967189725684254972, guid: 706138da27e17354a9a07d0061514b31, type: 3}
-  shootingPoint: {fileID: 497144185}
-  maximoValorY: 0.93
-  maximoValorX: 1.64
-  ratioShot: 0.1
-  lifes: 3
-  segundosTiempoRecuperacion: 3
-  textLifes: {fileID: 469297215}
-  textScore: {fileID: 1311421441}
 --- !u!212 &709301531
 SpriteRenderer:
   serializedVersion: 2
@@ -975,6 +951,31 @@ PolygonCollider2D:
       - {x: 0.14249541, y: 0.012495335}
       - {x: 0.08496584, y: 0.027492229}
   m_UseDelaunayMesh: 0
+--- !u!114 &709301535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709301529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d85640a9d51e146ab7497eac1b075c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpaceShipController
+  linearVelocity: 1.5
+  move: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  shoot: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  prefabShot: {fileID: 8967189725684254972, guid: 706138da27e17354a9a07d0061514b31, type: 3}
+  shootingPoint: {fileID: 497144185}
+  maximoValorY: 0.93
+  maximoValorX: 1.64
+  ratioShot: 0.1
+  lifes: 3
+  recoverySecondsLimit: 1.5
+  blinkingSecondsInterval: 0.15
+  textLifes: {fileID: 469297215}
+  textScore: {fileID: 1311421441}
 --- !u!1001 &754950298
 PrefabInstance:
   m_ObjectHideFlags: 0
