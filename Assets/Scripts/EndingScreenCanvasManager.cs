@@ -34,6 +34,7 @@ public class EndingScreenCanvasManager : MonoBehaviour
     public void RetryButtonClick()
     {
         //Volvemos a la primera escena, reseteando primero las variables globales:
+        ClsGlobales.sectionStage1 = 0;
         ClsGlobales.activateFinalBoss = false;
         ClsGlobales.scorePlayer = 0;
         ClsGlobales.initialLifesNumber = 3;

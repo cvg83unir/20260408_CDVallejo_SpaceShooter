@@ -32,10 +32,14 @@ public class PlayerShot : MonoBehaviour
     //    Destroy(gameObject);
     //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D elOtro)
     {
-        //La bala se tiene que destruir siempre que se choque con algo
-        Destroy(gameObject);
+        //La bala se tiene que destruir siempre que se choque con algo, salvo las flags de secciones:
+        if (!elOtro.tag.StartsWith("FlagSection"))
+        {
+            Destroy(gameObject);
+        }
+        
     }
 
 }

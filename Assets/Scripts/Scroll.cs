@@ -6,8 +6,7 @@ public class Scroll : MonoBehaviour
 {
     [SerializeField] private float velocidad;
     [SerializeField] private Vector3 direccion;
-    //[SerializeField] private float anchoImagen;
-    [SerializeField] private float posicion_X_FinalBoss;
+    [SerializeField] private float X_position_FinalBoss = -32.5f;
 
     private Vector3 posicionInicial;
     private Vector3 nuevaPosicion;
@@ -32,15 +31,15 @@ public class Scroll : MonoBehaviour
     void Update()
     {
 
-        //Debug.Log("Nueva posición. X = " + nuevaPosicion.x + ", posicion_X_FinalBoss = " + posicion_X_FinalBoss);
-        if (nuevaPosicion.x >= posicion_X_FinalBoss && ClsGlobales.startScrollStageOne)
+        Debug.Log("Nueva posición. X = " + nuevaPosicion.x + ", posicion_X_FinalBoss = " + X_position_FinalBoss);
+        if (nuevaPosicion.x >= X_position_FinalBoss && ClsGlobales.startScrollStageOne)
         {
             this.secondsCounter += Time.deltaTime;
             movimientoEscenario();
         }
-        else if(nuevaPosicion.x < posicion_X_FinalBoss && ClsGlobales.startScrollStageOne)
+        else if(nuevaPosicion.x < X_position_FinalBoss && ClsGlobales.startScrollStageOne)
         {
-            //Debug.Log("El escenario se para. nueva posición. X = " + nuevaPosicion.x + ", Y = " + nuevaPosicion.y);
+            Debug.Log("El escenario se para. nueva posición. X = " + nuevaPosicion.x + ", Y = " + nuevaPosicion.y);
 
             //Cuando el escenario se para, tengo que activar al enemigo final y desactivar los enemigos aleatorios:
             ClsGlobales.activateFinalBoss = true;

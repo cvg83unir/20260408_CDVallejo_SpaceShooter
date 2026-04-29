@@ -32,7 +32,7 @@ public class SpaceShipController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Sprite defaultSprite;
     private PolygonCollider2D pcollider;
-    private Vector2 rawMove = Vector2.zero; 
+    private Vector2 rawMove = Vector2.zero;
 
     private void Awake()
     {
@@ -82,7 +82,7 @@ public class SpaceShipController : MonoBehaviour
         }
 
         //Temporizador del tiempo del recuperación del jugador:
-        if(recovering)
+        if (recovering)
         {
             this.actualRecoveringSeconds += Time.deltaTime;
             if (this.actualRecoveringSeconds > this.recoverySecondsLimit)
@@ -98,7 +98,7 @@ public class SpaceShipController : MonoBehaviour
         }
 
         //Delimitamos los valores de la Y dentro de las cuales se puede mover nuestra nave:
-        float yDelimitada = Mathf.Clamp(transform.position.y, - this.maximoValorY, this.maximoValorY);
+        float yDelimitada = Mathf.Clamp(transform.position.y, -this.maximoValorY, this.maximoValorY);
 
         //Delimitamos los valores de la Y dentro de las cuales se puede mover nuestra nave:
         float xDelimitada = Mathf.Clamp(transform.position.x, -this.maximoValorX, this.maximoValorX);
@@ -116,7 +116,7 @@ public class SpaceShipController : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        this.rawMove = context.action.ReadValue<Vector2>(); 
+        this.rawMove = context.action.ReadValue<Vector2>();
     }
 
     private void OnShoot(InputAction.CallbackContext context)
@@ -156,7 +156,8 @@ public class SpaceShipController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D elOtro)
     {
-        if (!elOtro.CompareTag("PlayerShot"))
+        //No tenemos que perder vida si chocamos con nuestro propio disparo o con las banderas de sección.
+        if (!elOtro.CompareTag("PlayerShot") && !elOtro.tag.StartsWith("FlagSection"))
         {
             //Cada vez que algo colisione con mi nave, nos quitamos una vida, salvo que este en
             //tiempo de recuperación:
@@ -209,4 +210,23 @@ public class SpaceShipController : MonoBehaviour
         this.pcollider.enabled = true;
     }
 
+    private void OnTriggerExit2D(Collider2D elOtro)
+    {
+        if (elOtro.CompareTag("FlagSection1"))
+        {
+            ClsGlobales.sectionStage1 = 1;
+            Debug.Log("Sección Escenario: " + ClsGlobales.sectionStage1);
+        }
+        else if (elOtro.CompareTag("FlagSection2"))
+        {
+            ClsGlobales.sectionStage1 = 2;
+            Debug.Log("Sección Escenario: " + ClsGlobales.sectionStage1);
+        }
+        else if (elOtro.CompareTag("FlagSectionFinalBoss"))
+        {
+            ClsGlobales.sectionStage1 = 4;
+            Debug.Log("Sección Escenario: " + ClsGlobales.sectionStage1);
+        }
+
+    }
 }

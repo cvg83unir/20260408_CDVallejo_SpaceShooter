@@ -53,10 +53,10 @@ public class Shot : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D elOtro)
     {
         //La bala se tiene que destruir en ciertas condiciones, por ejemplo.
-        //Una bala del jugador se tiene que destruir en cuanto toque en cualquier cosa, salvo otros disparos o mi propia nave:
+        //Una bala del jugador se tiene que destruir en cuanto toque en cualquier cosa, salvo otros disparos o mi propia nave o las banderas de sección:
         if (this.tag.Equals("PlayerShot"))
         {
-            if (!elOtro.CompareTag("EnemyShot") && !elOtro.CompareTag("Player"))
+            if (!elOtro.CompareTag("EnemyShot") && !elOtro.CompareTag("Player") && !elOtro.tag.StartsWith("FlagSection"))
             {
                 Destroy(gameObject);
             }

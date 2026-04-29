@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
@@ -148,7 +149,7 @@ public class BossController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D elOtro)
     {
         //El enemigo final tiene que perder vida cuando le impacte una bala del jugador:
-        if (elOtro.CompareTag("PlayerShot") && ClsGlobales.activateFinalBoss ==true)
+        if (elOtro.CompareTag("PlayerShot") && ClsGlobales.activateFinalBoss == true)
         {
             this.lifes--;
             this.bossText.text = "JEFE: " + this.lifes;

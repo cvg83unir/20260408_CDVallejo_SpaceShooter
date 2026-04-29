@@ -103,13 +103,13 @@ TextureImporter:
       name: NES - Gradius - Miscellaneous - Background Tiles_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 383
-        width: 61
-        height: 77
+        x: 4
+        y: 384
+        width: 56
+        height: 76
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 5, y: 0, z: 6, w: 0}
       customData: 
       outline: []
       physicsShape: []
@@ -125,13 +125,13 @@ TextureImporter:
       name: NES - Gradius - Miscellaneous - Background Tiles_1
       rect:
         serializedVersion: 2
-        x: 4
+        x: 5
         y: 348
-        width: 65
+        width: 64
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 6}
       customData: 
       outline: []
       physicsShape: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: NES - Gradius - Miscellaneous - Background Tiles_2
       rect:
         serializedVersion: 2
-        x: 70
+        x: 71
         y: 348
         width: 48
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,12 +169,12 @@ TextureImporter:
       name: NES - Gradius - Miscellaneous - Background Tiles_3
       rect:
         serializedVersion: 2
-        x: 120
+        x: 121
         y: 348
-        width: 49
+        width: 48
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -193,10 +193,10 @@ TextureImporter:
         serializedVersion: 2
         x: 171
         y: 348
-        width: 63
+        width: 64
         height: 51
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,12 +213,12 @@ TextureImporter:
       name: NES - Gradius - Miscellaneous - Background Tiles_5
       rect:
         serializedVersion: 2
-        x: 236
+        x: 237
         y: 348
-        width: 96
-        height: 76
+        width: 95
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,12 +235,12 @@ TextureImporter:
       name: NES - Gradius - Miscellaneous - Background Tiles_6
       rect:
         serializedVersion: 2
-        x: 336
-        y: 348
-        width: 97
-        height: 77
+        x: 337
+        y: 349
+        width: 96
+        height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -249,6 +249,28 @@ TextureImporter:
       bones: []
       spriteID: 160ef935b0446cc428e6d9c837b68315
       internalID: -1418103857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Gradius - Miscellaneous - Background Tiles_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 365
+        width: 32
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13e31eeb60802ea49bb00e666be4edc3
+      internalID: 1278063224
       vertices: []
       indices: 
       edges: []
@@ -274,6 +296,7 @@ TextureImporter:
       NES - Gradius - Miscellaneous - Background Tiles_4: -1766112019
       NES - Gradius - Miscellaneous - Background Tiles_5: -1370262942
       NES - Gradius - Miscellaneous - Background Tiles_6: -1418103857
+      NES - Gradius - Miscellaneous - Background Tiles_7: 1278063224
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

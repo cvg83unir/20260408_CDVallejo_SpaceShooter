@@ -36,7 +36,7 @@ public class TitleScreenCanvasManager : MonoBehaviour
         ClsGlobales.initialLifesNumber = lifesNumber;
         //Debug.Log("Pulsado el botón con número de vidas: " + lifesNumber);
         ClsGlobales.startScrollStageOne = true;
-        SceneManager.LoadScene("GameplayScene");
+        SceneManager.LoadScene("GameplaySceneV2");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

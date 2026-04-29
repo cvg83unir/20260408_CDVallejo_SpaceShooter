@@ -8,6 +8,9 @@ TagManager:
   - EnemyShot
   - FinalBoss
   - Enemy
+  - FlagSection1
+  - FlagSection2
+  - FlagSectionFinalBoss
   layers:
   - Default
   - TransparentFX
